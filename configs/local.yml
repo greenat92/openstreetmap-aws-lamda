@@ -1,0 +1,3 @@
+ENV: local
+MESSAGE: 'hello world'
+REGION: 'localhost'

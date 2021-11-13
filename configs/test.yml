@@ -1,0 +1,3 @@
+ENV: test
+MESSAGE: 'hello world'
+REGION: ${self:custom.region}

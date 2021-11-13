@@ -1,0 +1,48 @@
+service: serverless-street-map
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'prod'}
+  region: eu-central-1
+  timeout: 10 #Default Lambda timeout
+  memorySize: 512 #Default Lambda Memory Size
+  versionFunctions: false # No functions versioning
+  #role: arn:aws:iam::#{AWS::AccountId}:role/existing-role
+  # package:
+  #   excludeDevDependencies: true
+  #   exclude:
+  #     - .git/**
+  #     - .vscode/**
+  #     - .test/**
+
+  environment: #Global Environment variables
+    ${file(./configs/${self:provider.stage}.yml)}
+
+  iamRoleStatements: # Permissions for all of your functions can be set here
+    - Effect: Allow
+      Action: # Gives permission to Lambda execution
+        - lambda:InvokeFunction
+        - lambda:InvokeAsync
+      Resource: '*'
+
+custom:
+  region: ${self:provider.region}
+  stage: ${opt:stage, self:provider.stage}
+  prefix: ${self:custom.stage}-${self:service}
+  process: ${self:custom.prefix}-process
+  config: ${self:custom.prefix}-config
+
+  serverless-offline:
+    host: '0.0.0.0'
+
+  splitStacks:
+    perFunction: true
+    perType: true
+
+plugins:
+  - serverless-pseudo-parameters
+  - serverless-offline
+
+functions: ${file(serverless-dynamic.js)}
+# Infrastrucure - Cloud Formation

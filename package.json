@@ -1,0 +1,38 @@
+{
+  "name": "aws-lamda-function",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker": "docker-compose up --force-recreate",
+    "dev": "npm install; serverless offline start --stage local",
+    "lint": "./node_modules/.bin/eslint",
+    "unit-test": "mocha --recursive test/unit/",
+    "integration-test": "mocha --recursive test/integration/"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "api",
+    "serverless",
+    "lambda",
+    "AWS"
+  ],
+  "author": "Lakhdar Ben",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bluebird": "^3.7.2",
+    "osmtogeojson": "^3.0.0-beta.4",
+    "serverless-pseudo-parameters": "^1.6.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.780.0",
+    "chai": "^4.2.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.0",
+    "mocha": "^8.2.0",
+    "serverless-offline": "^4.10.6",
+    "serverless-plugin-split-stacks": "^1.9.3"
+  }
+}
