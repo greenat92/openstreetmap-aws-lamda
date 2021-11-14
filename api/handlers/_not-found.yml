@@ -1,6 +1,6 @@
 # Config for Not Found Endpoints
 notFound:
-  handler: modules/redirects.notFound
+  handler: api/modules/redirects.notFound
   timeout: 30
   events:
     - http:

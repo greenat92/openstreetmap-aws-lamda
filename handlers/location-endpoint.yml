@@ -1,7 +1,0 @@
-location-detail:
-  handler: modules/locations/endpoints/get.detail
-  timeout: 30
-  events:
-    - http:
-        path: api/v1/locations/
-        method: get

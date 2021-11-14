@@ -1,5 +1,5 @@
 {
-  "name": "aws-lamda-function",
+  "name": "geojson-features-lamda-function",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

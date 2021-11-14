@@ -1,17 +1,16 @@
 /* eslint-disable no-undef */
 const { expect } = require('chai');
-// const { assert } = require('chai');
 
-const constants = require('../../../../shared/constant');
-const axios = require('../../../../shared/lib/axios');
+const constants = require('../../../../api/shared/constant');
+const axios = require('../../../../api/shared/lib/axios');
 
 describe('#axios library', () => {
-  it('#Test getApiRequest', () => {
+  it('#Test getApiRequest function', () => {
     expect(axios.getApiRequest).to.be.a('function');
   });
 
   it('#get a simple api call with wrong uri', async () => {
-    const uri = constants.STREET_MAP_API;
+    const uri = constants.OPEN_STREET_MAP_API_URI;
     const res = await axios.getApiRequest(uri);
     expect(res.response.status).to.be.equal(400);
     expect(res.response.data).to.be.equal(
@@ -21,7 +20,7 @@ describe('#axios library', () => {
   });
 
   it('#get a simple api call with correct data', async () => {
-    const uri = constants.STREET_MAP_API;
+    const uri = constants.OPEN_STREET_MAP_API_URI;
     const bbox = '?bbox=13.38798,52.52326,13.38954,52.52389';
     const res = await axios.getApiRequest(`${uri}${bbox}`);
     expect(res.status).to.be.equal(200);

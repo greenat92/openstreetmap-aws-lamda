@@ -1,3 +1,2 @@
 ENV: dev
-MESSAGE: 'hello world'
 REGION: ${self:custom.region}
