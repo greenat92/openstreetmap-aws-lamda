@@ -1,4 +1,4 @@
-service: serverless-street-map
+service: getGeoJSONFeaturesGetDetailRestApi
 
 provider:
   name: aws
@@ -8,14 +8,6 @@ provider:
   timeout: 10 #Default Lambda timeout
   memorySize: 512 #Default Lambda Memory Size
   versionFunctions: false # No functions versioning
-  #role: arn:aws:iam::#{AWS::AccountId}:role/existing-role
-  # package:
-  #   excludeDevDependencies: true
-  #   exclude:
-  #     - .git/**
-  #     - .vscode/**
-  #     - .test/**
-
   environment: #Global Environment variables
     ${file(./configs/${self:provider.stage}.yml)}
 

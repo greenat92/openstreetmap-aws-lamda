@@ -1,0 +1,75 @@
+swagger: '2.0'
+info:
+  version: '2017-04-20T04:08:08Z'
+  title: GetGeoJSONFeaturesGetailRestApi
+
+securityDefinitions:
+  # X-API-Key: abcdef12345
+  APIKeyHeader:
+    type: apiKey
+    in: header
+    name: X-API-Key
+
+host: ghz3wrm79l.execute-api.eu-central-1.amazonaws.com
+basePath: /prod/api/v1
+schemes:
+  - https
+paths:
+  /geojson-features:
+    get:
+      security:
+        - APIKeyHeader: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: bbox
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/Result'
+definitions:
+  Input:
+    type: object
+    required:
+      - bbox
+    properties:
+      bbox:
+        type: string
+        description: this valide example of bbox=13.38798,52.52326,13.38954,52.52389 query param
+    title: Input
+  Output:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          type:
+            type: string
+          features:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                type:
+                  type: string
+                properties:
+                  type: object
+                geometry:
+                  type: object
+    title: Output
+  Result:
+    type: object
+    properties:
+      input:
+        $ref: '#/definitions/Input'
+      output:
+        $ref: '#/definitions/Output'
+    title: Result
