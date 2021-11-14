@@ -5,7 +5,7 @@ const constant = require('../../../shared/constant');
 
 module.exports.detail = async (event) => {
   const { bbox } = event.queryStringParameters;
-  if (!bbox || bbox === undefined) {
+  if (!bbox) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'bbox query param is required' }),
